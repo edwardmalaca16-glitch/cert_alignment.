@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Final Filtered Certification Matrix</title>
+<title>FINAL FILTERED CERTIFICATION MATRIX</title>
 
 <style>
 body {
@@ -13,16 +13,19 @@ body {
 
 h1 {
     text-align: center;
+    margin-bottom: 20px;
 }
 
-#searchInput {
-    width: 100%;
-    padding: 10px;
-    margin: 15px 0;
+.controls {
+    margin-bottom: 20px;
+}
+
+#searchInput, #deptFilter {
+    padding: 8px;
+    margin-right: 10px;
     font-size: 14px;
 }
 
-/* Desktop Table */
 table {
     border-collapse: collapse;
     width: 100%;
@@ -48,9 +51,8 @@ a {
     text-decoration: none;
 }
 
-/* 📱 Mobile View */
+/* Mobile view */
 @media screen and (max-width: 768px) {
-
     table, thead, tbody, th, td, tr {
         display: block;
         width: 100%;
@@ -63,9 +65,9 @@ a {
     tr {
         margin-bottom: 15px;
         border: 1px solid #ccc;
-        padding: 10px;
         border-radius: 5px;
-        background: #f9f9f9;
+        padding: 10px;
+        background-color: #f9f9f9;
     }
 
     td {
@@ -76,7 +78,6 @@ a {
     td::before {
         font-weight: bold;
         display: block;
-        margin-top: 5px;
     }
 
     td:nth-of-type(1)::before { content: "Department"; }
@@ -94,7 +95,14 @@ a {
 
 <h1>FINAL FILTERED CERTIFICATION MATRIX</h1>
 
-<input type="text" id="searchInput" onkeyup="filterTable()" placeholder="Search certifications...">
+<div class="controls">
+    <input type="text" id="searchInput" onkeyup="filterTable()" placeholder="Search certifications...">
+    <select id="deptFilter" onchange="filterTable()">
+        <option value="">All Departments</option>
+        <option value="SDI">SDI</option>
+        <option value="IT">IT</option>
+    </select>
+</div>
 
 <table id="certTable">
 <thead>
@@ -111,64 +119,136 @@ a {
 
 <tbody>
 
+<!-- SDI Certifications -->
 <tr>
 <td>SDI</td>
-<td>Design and develop object-oriented Java SE applications</td>
+<td>Develop Java SE applications using OOP, streams, concurrency, and JDBC</td>
 <td>Oracle</td>
-<td>Oracle Certified Professional: Java SE Developer</td>
+<td>Oracle Certified Professional: Java SE 17 Developer</td>
 <td>245</td>
-<td>Validates enterprise-level Java development skills.</td>
-<td><a href="https://education.oracle.com/java-se-developer" target="_blank">View</a></td>
+<td>Validates ability to build production-level Java applications aligned with enterprise backend systems.</td>
+<td><a href="https://education.oracle.com/java-se-17-developer/pexam_1Z0-829" target="_blank">View</a></td>
 </tr>
 
 <tr>
 <td>SDI</td>
-<td>Develop backend automation scripts and REST APIs using Python</td>
+<td>Develop REST APIs, automation scripts, and data-processing modules using Python 3</td>
 <td>Python Institute</td>
 <td>PCAP – Certified Associate in Python Programming</td>
 <td>295</td>
-<td>Confirms structured backend and automation programming capability.</td>
+<td>Confirms competency in structured Python programming for backend service development.</td>
 <td><a href="https://pythoninstitute.org/pcap" target="_blank">View</a></td>
 </tr>
 
 <tr>
+<td>SDI</td>
+<td>Implement Scrum in sprint planning, backlog grooming, and iterative delivery</td>
+<td>Scrum.org</td>
+<td>Professional Scrum Developer™ I (PSD I)</td>
+<td>200</td>
+<td>Ensures practical application of Agile Scrum methodology in software projects.</td>
+<td><a href="https://www.scrum.org/professional-scrum-developer-i-certification" target="_blank">View</a></td>
+</tr>
+
+<tr>
+<td>SDI</td>
+<td>Design AI solutions using Azure Cognitive Services and ML pipelines</td>
+<td>Microsoft</td>
+<td>Microsoft Certified: Azure AI Engineer Associate (AI-102)</td>
+<td>165</td>
+<td>Validates integration of AI services, NLP, and computer vision into enterprise apps.</td>
+<td><a href="https://learn.microsoft.com/certifications/azure-ai-engineer" target="_blank">View</a></td>
+</tr>
+
+<tr>
+<td>SDI</td>
+<td>Develop ERP extensions and integrate business workflows in Dynamics 365</td>
+<td>Microsoft</td>
+<td>Microsoft Certified: Dynamics 365 Business Central Developer Associate</td>
+<td>165</td>
+<td>Confirms ability to customize ERP logic and automate business processes.</td>
+<td><a href="https://learn.microsoft.com/certifications/d365-business-central-developer-associate" target="_blank">View</a></td>
+</tr>
+
+<!-- IT Certifications -->
+<tr>
 <td>IT</td>
-<td>Diagnose hardware and configure operating systems</td>
+<td>Diagnose motherboard, RAM, storage issues and configure Windows/Linux OS</td>
 <td>CompTIA</td>
 <td>CompTIA A+</td>
 <td>246</td>
-<td>Baseline IT troubleshooting certification.</td>
+<td>Establishes foundational technical support and troubleshooting skills.</td>
 <td><a href="https://www.comptia.org/certifications/a" target="_blank">View</a></td>
 </tr>
 
 <tr>
 <td>IT</td>
-<td>Configure routers, switches, and VLANs</td>
+<td>Configure VLANs, static/dynamic routing, and troubleshoot IP networks</td>
 <td>Cisco</td>
-<td>Cisco Certified Network Associate (CCNA)</td>
+<td>Cisco Certified Network Associate (CCNA 200-301)</td>
 <td>300</td>
-<td>Validates enterprise networking configuration skills.</td>
-<td><a href="https://www.cisco.com" target="_blank">View</a></td>
+<td>Validates hands-on enterprise network deployment and troubleshooting skills.</td>
+<td><a href="https://www.cisco.com/c/en/us/training-events/training-certifications/certifications/associate/ccna.html" target="_blank">View</a></td>
 </tr>
 
 <tr>
 <td>IT</td>
-<td>Implement security controls and risk mitigation</td>
+<td>Implement subnetting, network security controls, and performance troubleshooting</td>
+<td>CompTIA</td>
+<td>CompTIA Network+</td>
+<td>358</td>
+<td>Confirms vendor-neutral networking knowledge for enterprise environments.</td>
+<td><a href="https://www.comptia.org/certifications/network" target="_blank">View</a></td>
+</tr>
+
+<tr>
+<td>IT</td>
+<td>Implement access control, risk assessment, and incident response procedures</td>
 <td>CompTIA</td>
 <td>CompTIA Security+</td>
 <td>392</td>
-<td>Confirms foundational cybersecurity skills.</td>
+<td>Validates baseline cybersecurity protection skills for IT infrastructure.</td>
 <td><a href="https://www.comptia.org/certifications/security" target="_blank">View</a></td>
 </tr>
 
 <tr>
 <td>IT</td>
-<td>Design enterprise cybersecurity architecture</td>
+<td>Deploy and manage secure hybrid cloud infrastructure workloads</td>
+<td>CompTIA</td>
+<td>CompTIA Cloud+</td>
+<td>358</td>
+<td>Confirms operational management of secure cloud and virtualization environments.</td>
+<td><a href="https://www.comptia.org/certifications/cloud" target="_blank">View</a></td>
+</tr>
+
+<tr>
+<td>IT</td>
+<td>Design scalable and secure cloud architecture solutions</td>
+<td>Google Cloud</td>
+<td>Professional Cloud Architect</td>
+<td>200</td>
+<td>Validates ability to design high-availability and secure cloud systems.</td>
+<td><a href="https://cloud.google.com/certification/cloud-architect" target="_blank">View</a></td>
+</tr>
+
+<tr>
+<td>IT</td>
+<td>Design and manage enterprise cybersecurity architecture and governance</td>
 <td>ISC2</td>
 <td>Certified Information Systems Security Professional (CISSP)</td>
 <td>749</td>
-<td>Advanced global cybersecurity credential.</td>
+<td>Globally recognized credential for advanced cybersecurity leadership.</td>
 <td><a href="https://www.isc2.org/Certifications/CISSP" target="_blank">View</a></td>
+</tr>
+
+<tr>
+<td>IT</td>
+<td>Implement IT service lifecycle processes including incident, change, and service management</td>
+<td>AXELOS</td>
+<td>ITIL® 4 Foundation</td>
+<td>300</td>
+<td>Validates knowledge of IT service management best practices for enterprise support.</td>
+<td><a href="https://www.axelos.com/certifications/itil-service-management/itil-4-foundation" target="_blank">View</a></td>
 </tr>
 
 </tbody>
@@ -189,12 +269,18 @@ function sortTable(n) {
 }
 
 function filterTable() {
-  var input = document.getElementById("searchInput");
-  var filter = input.value.toLowerCase();
+  var searchInput = document.getElementById("searchInput").value.toLowerCase();
+  var deptFilter = document.getElementById("deptFilter").value;
   var rows = document.querySelectorAll("#certTable tbody tr");
 
   rows.forEach(row => {
-    row.style.display = row.innerText.toLowerCase().includes(filter) ? "" : "none";
+    var text = row.innerText.toLowerCase();
+    var dept = row.cells[0].innerText;
+    if (text.includes(searchInput) && (deptFilter === "" || dept === deptFilter)) {
+        row.style.display = "";
+    } else {
+        row.style.display = "none";
+    }
   });
 }
 </script>
