@@ -3,386 +3,201 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Enterprise Certification Alignment Matrix</title>
+<title>Final Filtered Certification Matrix</title>
 
 <style>
-:root {
-    --primary: #0b3d91;
-    --secondary: #1f5fbf;
-    --background: #f4f6f9;
-    --card: #ffffff;
-    --border: #e0e6ed;
-}
-
 body {
-    margin: 0;
-    font-family: "Segoe UI", Arial, sans-serif;
-    background: var(--background);
-    color: #1f2933;
-}
-
-header {
-    padding: 20px;
-    background: var(--primary);
-    color: white;
+    font-family: Arial, sans-serif;
+    margin: 20px;
 }
 
 h1 {
-    margin: 0;
-    font-weight: 600;
-    font-size: 24px;
+    text-align: center;
 }
 
-.container {
-    padding: 20px;
-    overflow-x: auto;
-}
-
-table {
+#searchInput {
     width: 100%;
+    padding: 10px;
+    margin: 15px 0;
+    font-size: 14px;
+}
+
+/* Desktop Table */
+table {
     border-collapse: collapse;
-    min-width: 1300px;
-    background: var(--card);
-    box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+    width: 100%;
+}
+
+th, td {
+    border: 1px solid #333;
+    padding: 10px;
+    text-align: left;
 }
 
 th {
-    background: var(--secondary);
-    color: white;
-    padding: 14px;
-    text-align: left;
-    font-size: 12px;
-    text-transform: uppercase;
-    letter-spacing: 0.5px;
-}
-
-td {
-    padding: 10px 14px;
-    border-bottom: 1px solid var(--border);
-    font-size: 12px;
-    vertical-align: top;
+    background-color: #f2f2f2;
+    cursor: pointer;
 }
 
 tr:hover {
-    background: #f0f4fa;
+    background-color: #f9f9f9;
 }
 
-@media (max-width: 768px) {
-    table {
-        min-width: 1000px;
+a {
+    color: blue;
+    text-decoration: none;
+}
+
+/* 📱 Mobile View */
+@media screen and (max-width: 768px) {
+
+    table, thead, tbody, th, td, tr {
+        display: block;
+        width: 100%;
     }
+
+    thead {
+        display: none;
+    }
+
+    tr {
+        margin-bottom: 15px;
+        border: 1px solid #ccc;
+        padding: 10px;
+        border-radius: 5px;
+        background: #f9f9f9;
+    }
+
+    td {
+        border: none;
+        padding: 5px 0;
+    }
+
+    td::before {
+        font-weight: bold;
+        display: block;
+        margin-top: 5px;
+    }
+
+    td:nth-of-type(1)::before { content: "Department"; }
+    td:nth-of-type(2)::before { content: "Task / Skill Requirement"; }
+    td:nth-of-type(3)::before { content: "Vendor"; }
+    td:nth-of-type(4)::before { content: "Certification Name"; }
+    td:nth-of-type(5)::before { content: "Cost (USD)"; }
+    td:nth-of-type(6)::before { content: "Justification"; }
+    td:nth-of-type(7)::before { content: "Official Link"; }
 }
 </style>
 </head>
 
 <body>
 
-<header>
-    <h1>Enterprise Certification Alignment Framework</h1>
-</header>
+<h1>FINAL FILTERED CERTIFICATION MATRIX</h1>
 
-<div class="container">
-<table>
+<input type="text" id="searchInput" onkeyup="filterTable()" placeholder="Search certifications...">
+
+<table id="certTable">
 <thead>
 <tr>
-<th>Department</th>
-<th>Task / Skill Requirement</th>
-<th>Certification Vendor</th>
-<th>Certification Name</th>
-<th>Cost (Est.)</th>
-<th>Short Direct Justification</th>
+<th onclick="sortTable(0)">Department</th>
+<th onclick="sortTable(1)">Task / Skill Requirement</th>
+<th onclick="sortTable(2)">Vendor</th>
+<th onclick="sortTable(3)">Certification Name</th>
+<th onclick="sortTable(4)">Cost (USD)</th>
+<th onclick="sortTable(5)">Justification</th>
+<th>Official Link</th>
 </tr>
 </thead>
+
 <tbody>
 
-<!-- SOFTWARE DEVELOPMENT -->
-
 <tr>
-<td>Software Development</td>
-<td>General Software Engineering Standards</td>
-<td>IEEE Computer Society</td>
-<td>IEEE CS Certifications</td>
-<td>Varies</td>
-<td>Validates global software engineering standards</td>
-</tr>
-
-<tr>
-<td>Software Development</td>
-<td>Professional Software Engineering</td>
-<td>IEEE</td>
-<td>Certified Software Development Professional (CSDP)</td>
-<td>$350</td>
-<td>Advanced professional development credential</td>
-</tr>
-
-<tr>
-<td>Software Development</td>
-<td>Agile Development</td>
-<td>Scrum.org</td>
-<td>Professional Scrum Developer (PSD)</td>
-<td>$200</td>
-<td>Confirms agile development competency</td>
-</tr>
-
-<tr>
-<td>Software Development</td>
-<td>Java Programming</td>
+<td>SDI</td>
+<td>Design and develop object-oriented Java SE applications</td>
 <td>Oracle</td>
-<td>Java Certification (OCJA / Bronze)</td>
-<td>$245</td>
-<td>Validates enterprise Java programming skills</td>
+<td>Oracle Certified Professional: Java SE Developer</td>
+<td>245</td>
+<td>Validates enterprise-level Java development skills.</td>
+<td><a href="https://education.oracle.com/java-se-developer" target="_blank">View</a></td>
 </tr>
 
 <tr>
-<td>Software Development</td>
-<td>Python Programming</td>
+<td>SDI</td>
+<td>Develop backend automation scripts and REST APIs using Python</td>
 <td>Python Institute</td>
-<td>PCAP Certification</td>
-<td>$295</td>
-<td>Confirms Python programming proficiency</td>
+<td>PCAP – Certified Associate in Python Programming</td>
+<td>295</td>
+<td>Confirms structured backend and automation programming capability.</td>
+<td><a href="https://pythoninstitute.org/pcap" target="_blank">View</a></td>
 </tr>
 
 <tr>
-<td>Software Development</td>
-<td>Web Frontend Development</td>
-<td>W3C</td>
-<td>HTML/CSS Certification</td>
-<td>$200</td>
-<td>Ensures standards-based web design skills</td>
-</tr>
-
-<tr>
-<td>Software Development</td>
-<td>Full Stack Development</td>
-<td>Various Providers</td>
-<td>Certified Full Stack Developer</td>
-<td>Varies</td>
-<td>Validates frontend and backend integration skills</td>
-</tr>
-
-<tr>
-<td>Software Development</td>
-<td>Generative AI Development</td>
-<td>Various Providers</td>
-<td>Certification in Generative AI in Software Development</td>
-<td>Varies</td>
-<td>Demonstrates AI integration in software solutions</td>
-</tr>
-
-<tr>
-<td>Software Development</td>
-<td>JavaScript Development</td>
-<td>Various Providers</td>
-<td>JavaScript Certification</td>
-<td>Varies</td>
-<td>Confirms modern web scripting expertise</td>
-</tr>
-
-<tr>
-<td>Software Development</td>
-<td>Academic Coding Validation</td>
-<td>KPC</td>
-<td>SW Coding Qualification</td>
-<td>Varies</td>
-<td>Validates structured programming competency</td>
-</tr>
-
-<tr>
-<td>Software Development</td>
-<td>C Programming</td>
-<td>Various</td>
-<td>C Language Programming Ability Certification Test</td>
-<td>Varies</td>
-<td>Confirms C programming fundamentals</td>
-</tr>
-
-<tr>
-<td>Software Development</td>
-<td>Java Programming Skills Assessment</td>
-<td>Various</td>
-<td>JAVA Programming Ability Certification Test</td>
-<td>Varies</td>
-<td>Assesses applied Java coding skills</td>
-</tr>
-
-<!-- IT INFRASTRUCTURE -->
-
-<tr>
-<td>IT Infrastructure</td>
-<td>Hardware & Technical Support</td>
+<td>IT</td>
+<td>Diagnose hardware and configure operating systems</td>
 <td>CompTIA</td>
 <td>CompTIA A+</td>
-<td>$246</td>
-<td>Industry standard IT support baseline</td>
+<td>246</td>
+<td>Baseline IT troubleshooting certification.</td>
+<td><a href="https://www.comptia.org/certifications/a" target="_blank">View</a></td>
 </tr>
 
 <tr>
-<td>IT Infrastructure</td>
-<td>Server Administration</td>
-<td>CompTIA</td>
-<td>CompTIA Server+</td>
-<td>$358</td>
-<td>Validates enterprise server management</td>
-</tr>
-
-<tr>
-<td>IT Infrastructure</td>
-<td>Cloud Fundamentals</td>
-<td>Microsoft</td>
-<td>Azure Fundamentals</td>
-<td>$99</td>
-<td>Introduces enterprise cloud services</td>
-</tr>
-
-<tr>
-<td>IT Infrastructure</td>
-<td>Apple Device Support</td>
-<td>Apple</td>
-<td>Apple Certified Macintosh Technician (ACMT)</td>
-<td>Varies</td>
-<td>Certifies Mac hardware servicing skills</td>
-</tr>
-
-<tr>
-<td>IT Infrastructure</td>
-<td>Structured Cabling & Infrastructure</td>
-<td>BICSI</td>
-<td>BICSI ITS Technician</td>
-<td>Varies</td>
-<td>Validates telecom infrastructure installation skills</td>
-</tr>
-
-<tr>
-<td>IT Infrastructure</td>
-<td>Storage Systems</td>
-<td>Dell EMC</td>
-<td>Dell EMC Proven Professional</td>
-<td>Varies</td>
-<td>Validates enterprise storage solutions expertise</td>
-</tr>
-
-<tr>
-<td>IT Infrastructure</td>
-<td>Information Storage</td>
-<td>Dell EMC</td>
-<td>EMCISA</td>
-<td>Varies</td>
-<td>Entry-level enterprise storage certification</td>
-</tr>
-
-<tr>
-<td>IT Infrastructure</td>
-<td>Technical Support & Troubleshooting</td>
+<td>IT</td>
+<td>Configure routers, switches, and VLANs</td>
 <td>Cisco</td>
-<td>Cisco Certified Technician (CCT)</td>
-<td>$125</td>
-<td>Validates basic hardware troubleshooting skills</td>
-</tr>
-
-<!-- NETWORKING -->
-
-<tr>
-<td>Networking</td>
-<td>Enterprise Networking</td>
-<td>Cisco</td>
-<td>CCNA</td>
-<td>$300</td>
-<td>Core networking configuration certification</td>
+<td>Cisco Certified Network Associate (CCNA)</td>
+<td>300</td>
+<td>Validates enterprise networking configuration skills.</td>
+<td><a href="https://www.cisco.com" target="_blank">View</a></td>
 </tr>
 
 <tr>
-<td>Networking</td>
-<td>Network Fundamentals</td>
+<td>IT</td>
+<td>Implement security controls and risk mitigation</td>
 <td>CompTIA</td>
-<td>Network+</td>
-<td>$358</td>
-<td>Vendor-neutral networking baseline</td>
-</tr>
-
-<!-- CYBERSECURITY -->
-
-<tr>
-<td>Cybersecurity</td>
-<td>Security Fundamentals</td>
-<td>CompTIA</td>
-<td>Security+</td>
-<td>$392</td>
-<td>Baseline enterprise cybersecurity certification</td>
+<td>CompTIA Security+</td>
+<td>392</td>
+<td>Confirms foundational cybersecurity skills.</td>
+<td><a href="https://www.comptia.org/certifications/security" target="_blank">View</a></td>
 </tr>
 
 <tr>
-<td>Cybersecurity</td>
-<td>Advanced Security Leadership</td>
+<td>IT</td>
+<td>Design enterprise cybersecurity architecture</td>
 <td>ISC2</td>
-<td>CISSP</td>
-<td>$749</td>
-<td>Globally recognized senior security credential</td>
-</tr>
-
-<tr>
-<td>Cybersecurity</td>
-<td>AI Security</td>
-<td>CompTIA</td>
-<td>SecAI+</td>
-<td>Varies</td>
-<td>Focuses on AI-specific security risks</td>
-</tr>
-
-<!-- CLOUD -->
-
-<tr>
-<td>Cloud Computing</td>
-<td>Cloud Administration</td>
-<td>CompTIA</td>
-<td>Cloud+</td>
-<td>$358</td>
-<td>Validates cloud infrastructure management skills</td>
-</tr>
-
-<tr>
-<td>Cloud Computing</td>
-<td>Enterprise Cloud Architecture</td>
-<td>Google</td>
-<td>Professional Cloud Architect</td>
-<td>$200</td>
-<td>Advanced cloud solution architecture certification</td>
-</tr>
-
-<!-- IT SERVICE MANAGEMENT -->
-
-<tr>
-<td>IT Service Management</td>
-<td>IT Service Processes</td>
-<td>AXELOS</td>
-<td>ITIL Foundation</td>
-<td>$300</td>
-<td>Standard IT service management framework</td>
-</tr>
-
-<!-- AI & EMERGING TECH -->
-
-<tr>
-<td>AI & Emerging Technology</td>
-<td>AI Prompt Engineering</td>
-<td>CompTIA</td>
-<td>AI Prompting Essentials</td>
-<td>Varies</td>
-<td>Validates AI prompt development skills</td>
-</tr>
-
-<tr>
-<td>AI & Emerging Technology</td>
-<td>Business Application Development</td>
-<td>Microsoft</td>
-<td>Dynamics 365 Business Central Developer Associate</td>
-<td>$165</td>
-<td>Enterprise ERP development certification</td>
+<td>Certified Information Systems Security Professional (CISSP)</td>
+<td>749</td>
+<td>Advanced global cybersecurity credential.</td>
+<td><a href="https://www.isc2.org/Certifications/CISSP" target="_blank">View</a></td>
 </tr>
 
 </tbody>
 </table>
-</div>
+
+<script>
+function sortTable(n) {
+  var table = document.getElementById("certTable");
+  var rows = Array.from(table.rows).slice(1);
+  var asc = table.getAttribute("data-sort") !== "asc";
+  rows.sort(function(a, b) {
+    var x = a.cells[n].innerText.toLowerCase();
+    var y = b.cells[n].innerText.toLowerCase();
+    return asc ? x.localeCompare(y) : y.localeCompare(x);
+  });
+  rows.forEach(row => table.appendChild(row));
+  table.setAttribute("data-sort", asc ? "asc" : "desc");
+}
+
+function filterTable() {
+  var input = document.getElementById("searchInput");
+  var filter = input.value.toLowerCase();
+  var rows = document.querySelectorAll("#certTable tbody tr");
+
+  rows.forEach(row => {
+    row.style.display = row.innerText.toLowerCase().includes(filter) ? "" : "none";
+  });
+}
+</script>
 
 </body>
 </html>
-
