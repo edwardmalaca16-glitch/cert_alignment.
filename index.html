@@ -1,154 +1,203 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Certification Alignment Matrix</title>
-  <style>
-    body {
-      font-family: Arial, sans-serif;
-      margin: 0;
-      background: #f4f6f9;
-      color: #333;
-    }
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Final Filtered Certification Matrix</title>
 
-    header {
-      background: #0f172a;
-      color: white;
-      padding: 20px;
-      text-align: center;
-    }
+<style>
+body {
+    font-family: Arial, sans-serif;
+    margin: 20px;
+}
 
-    .container {
-      padding: 20px;
-      max-width: 1200px;
-      margin: auto;
-    }
+h1 {
+    text-align: center;
+}
 
-    h2 {
-      margin-bottom: 10px;
-    }
+#searchInput {
+    width: 100%;
+    padding: 10px;
+    margin: 15px 0;
+    font-size: 14px;
+}
 
-    table {
-      width: 100%;
-      border-collapse: collapse;
-      background: white;
-      border-radius: 8px;
-      overflow: hidden;
-      box-shadow: 0 2px 10px rgba(0,0,0,0.1);
-    }
+/* Desktop Table */
+table {
+    border-collapse: collapse;
+    width: 100%;
+}
 
-    th, td {
-      padding: 12px;
-      text-align: left;
-      border-bottom: 1px solid #ddd;
-    }
+th, td {
+    border: 1px solid #333;
+    padding: 10px;
+    text-align: left;
+}
 
-    th {
-      background: #1e293b;
-      color: white;
-    }
+th {
+    background-color: #f2f2f2;
+    cursor: pointer;
+}
 
-    tr:hover {
-      background: #f1f5f9;
-    }
+tr:hover {
+    background-color: #f9f9f9;
+}
 
-    footer {
-      text-align: center;
-      padding: 15px;
-      background: #0f172a;
-      color: white;
-      margin-top: 40px;
-      font-size: 14px;
-    }
+a {
+    color: blue;
+    text-decoration: none;
+}
 
-    @media (max-width: 768px) {
-      table, thead, tbody, th, td, tr {
+/* 📱 Mobile View */
+@media screen and (max-width: 768px) {
+
+    table, thead, tbody, th, td, tr {
         display: block;
-      }
+        width: 100%;
+    }
 
-      th {
+    thead {
         display: none;
-      }
+    }
 
-      td {
+    tr {
+        margin-bottom: 15px;
+        border: 1px solid #ccc;
         padding: 10px;
-        border: none;
-        position: relative;
-      }
+        border-radius: 5px;
+        background: #f9f9f9;
+    }
 
-      td::before {
-        content: attr(data-label);
+    td {
+        border: none;
+        padding: 5px 0;
+    }
+
+    td::before {
         font-weight: bold;
         display: block;
-        color: #475569;
-      }
+        margin-top: 5px;
     }
-  </style>
+
+    td:nth-of-type(1)::before { content: "Department"; }
+    td:nth-of-type(2)::before { content: "Task / Skill Requirement"; }
+    td:nth-of-type(3)::before { content: "Vendor"; }
+    td:nth-of-type(4)::before { content: "Certification Name"; }
+    td:nth-of-type(5)::before { content: "Cost (USD)"; }
+    td:nth-of-type(6)::before { content: "Justification"; }
+    td:nth-of-type(7)::before { content: "Official Link"; }
+}
+</style>
 </head>
+
 <body>
 
-<header>
-  <h1>Certification Alignment Matrix</h1>
-  <p>Department Skills and Professional Certification Mapping</p>
-</header>
+<h1>FINAL FILTERED CERTIFICATION MATRIX</h1>
 
-<div class="container">
-  <h2>Certification Table</h2>
+<input type="text" id="searchInput" onkeyup="filterTable()" placeholder="Search certifications...">
 
-  <table>
-    <thead>
-      <tr>
-        <th>Department</th>
-        <th>Task / Skill Requirement</th>
-        <th>Certification Vendor</th>
-        <th>Certification Name</th>
-        <th>Certification Level</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td data-label="Department">IT Department</td>
-        <td data-label="Task / Skill Requirement">Network installation & configuration</td>
-        <td data-label="Certification Vendor">Cisco</td>
-        <td data-label="Certification Name">CCNA</td>
-        <td data-label="Certification Level">Associate</td>
-      </tr>
-      <tr>
-        <td data-label="Department">IT Department</td>
-        <td data-label="Task / Skill Requirement">Server administration</td>
-        <td data-label="Certification Vendor">Microsoft</td>
-        <td data-label="Certification Name">Windows Server Hybrid Administrator Associate</td>
-        <td data-label="Certification Level">Associate</td>
-      </tr>
-      <tr>
-        <td data-label="Department">IT Department</td>
-        <td data-label="Task / Skill Requirement">Cloud deployment & management</td>
-        <td data-label="Certification Vendor">AWS</td>
-        <td data-label="Certification Name">AWS Solutions Architect – Associate</td>
-        <td data-label="Certification Level">Associate</td>
-      </tr>
-      <tr>
-        <td data-label="Department">IT Department</td>
-        <td data-label="Task / Skill Requirement">Cybersecurity fundamentals</td>
-        <td data-label="Certification Vendor">CompTIA</td>
-        <td data-label="Certification Name">Security+</td>
-        <td data-label="Certification Level">Intermediate</td>
-      </tr>
-      <tr>
-        <td data-label="Department">IT Department</td>
-        <td data-label="Task / Skill Requirement">Hardware troubleshooting</td>
-        <td data-label="Certification Vendor">CompTIA</td>
-        <td data-label="Certification Name">A+</td>
-        <td data-label="Certification Level">Beginner</td>
-      </tr>
-    </tbody>
-  </table>
-</div>
+<table id="certTable">
+<thead>
+<tr>
+<th onclick="sortTable(0)">Department</th>
+<th onclick="sortTable(1)">Task / Skill Requirement</th>
+<th onclick="sortTable(2)">Vendor</th>
+<th onclick="sortTable(3)">Certification Name</th>
+<th onclick="sortTable(4)">Cost (USD)</th>
+<th onclick="sortTable(5)">Justification</th>
+<th>Official Link</th>
+</tr>
+</thead>
 
-<footer>
-  © 2026 Certification Alignment | Created by Student
-</footer>
+<tbody>
+
+<tr>
+<td>SDI</td>
+<td>Design and develop object-oriented Java SE applications</td>
+<td>Oracle</td>
+<td>Oracle Certified Professional: Java SE Developer</td>
+<td>245</td>
+<td>Validates enterprise-level Java development skills.</td>
+<td><a href="https://education.oracle.com/java-se-developer" target="_blank">View</a></td>
+</tr>
+
+<tr>
+<td>SDI</td>
+<td>Develop backend automation scripts and REST APIs using Python</td>
+<td>Python Institute</td>
+<td>PCAP – Certified Associate in Python Programming</td>
+<td>295</td>
+<td>Confirms structured backend and automation programming capability.</td>
+<td><a href="https://pythoninstitute.org/pcap" target="_blank">View</a></td>
+</tr>
+
+<tr>
+<td>IT</td>
+<td>Diagnose hardware and configure operating systems</td>
+<td>CompTIA</td>
+<td>CompTIA A+</td>
+<td>246</td>
+<td>Baseline IT troubleshooting certification.</td>
+<td><a href="https://www.comptia.org/certifications/a" target="_blank">View</a></td>
+</tr>
+
+<tr>
+<td>IT</td>
+<td>Configure routers, switches, and VLANs</td>
+<td>Cisco</td>
+<td>Cisco Certified Network Associate (CCNA)</td>
+<td>300</td>
+<td>Validates enterprise networking configuration skills.</td>
+<td><a href="https://www.cisco.com" target="_blank">View</a></td>
+</tr>
+
+<tr>
+<td>IT</td>
+<td>Implement security controls and risk mitigation</td>
+<td>CompTIA</td>
+<td>CompTIA Security+</td>
+<td>392</td>
+<td>Confirms foundational cybersecurity skills.</td>
+<td><a href="https://www.comptia.org/certifications/security" target="_blank">View</a></td>
+</tr>
+
+<tr>
+<td>IT</td>
+<td>Design enterprise cybersecurity architecture</td>
+<td>ISC2</td>
+<td>Certified Information Systems Security Professional (CISSP)</td>
+<td>749</td>
+<td>Advanced global cybersecurity credential.</td>
+<td><a href="https://www.isc2.org/Certifications/CISSP" target="_blank">View</a></td>
+</tr>
+
+</tbody>
+</table>
+
+<script>
+function sortTable(n) {
+  var table = document.getElementById("certTable");
+  var rows = Array.from(table.rows).slice(1);
+  var asc = table.getAttribute("data-sort") !== "asc";
+  rows.sort(function(a, b) {
+    var x = a.cells[n].innerText.toLowerCase();
+    var y = b.cells[n].innerText.toLowerCase();
+    return asc ? x.localeCompare(y) : y.localeCompare(x);
+  });
+  rows.forEach(row => table.appendChild(row));
+  table.setAttribute("data-sort", asc ? "asc" : "desc");
+}
+
+function filterTable() {
+  var input = document.getElementById("searchInput");
+  var filter = input.value.toLowerCase();
+  var rows = document.querySelectorAll("#certTable tbody tr");
+
+  rows.forEach(row => {
+    row.style.display = row.innerText.toLowerCase().includes(filter) ? "" : "none";
+  });
+}
+</script>
 
 </body>
-</ht
+</html>
